@@ -26,7 +26,7 @@
         <td>
             <ul>
                 <li ng-repeat="result in report.result">
-                    {{ result.finishPos }} -
+                    {{ result.finishPos + 1}} -
                     <select ng-model="result.driver" ng-options="driver.name for driver in drivers">
                         <option value="">Non-league member</option>
                     </select>
