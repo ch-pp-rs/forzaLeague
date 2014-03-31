@@ -1,0 +1,42 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a></li>
+    </ul>
+    <h3 class="text-muted">forzaLeague</h3>
+</div>
+
+<table>
+    <tr>
+        <td>Track:</td>
+        <td>{{ report.track.circuit }}</td>
+        <td>
+            <ul>
+                <li ng-repeat="track in tracks">
+                    <a ng-click="selectTrack(track)">{{ track.circuit }} ({{ track.miles }})</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Number of Laps:</td>
+        <td><input ng-model="report.laps"/></td>
+    </tr>
+    <tr>
+        <td>Result:</td>
+        <td>
+            <ul>
+                <li ng-repeat="result in report.result">
+                    {{ result.finishPos }} -
+                    <select ng-model="result.driver" ng-options="driver.name for driver in drivers">
+                        <option value="">Non-league member</option>
+                    </select>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<a ng-click="submitRaceReport(report)">Submit race report</a>
+
+<div class="footer">
+</div>
