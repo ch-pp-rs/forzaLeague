@@ -10,7 +10,6 @@ angular.module('forzaLeagueApp')
     $scope.tracks = $firebase(ref);
 
     $scope.report = {};
-    $scope.report.date;
 
     $scope.drivers = [{'name': 'Smithy'}, {'name': 'Json'}, {'name': 'Chappers'}, {'name': 'Grimmers'}];
 
@@ -22,11 +21,10 @@ angular.module('forzaLeagueApp')
 
     $scope.selectTrack = function(track) {
       $scope.report.track = track;
-    }
+    };
 
     $scope.submitRaceReport = function(report) {
       ref = new Firebase('https://forza.firebaseio.com/raceReports/' + report.date + '/');
-      console.log(report);
       ref.update(angular.copy(report));
-    }
+    };
   });
