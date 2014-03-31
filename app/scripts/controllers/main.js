@@ -26,7 +26,6 @@ angular.module('forzaLeagueApp')
 
     $scope.submitRaceReport = function(report) {
       ref = new Firebase('https://forza.firebaseio.com/raceReports/' + report.date + '/');
-      console.log(report);
       ref.update(angular.copy(report));
     }
   });

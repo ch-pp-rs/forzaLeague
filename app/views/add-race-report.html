@@ -8,11 +8,11 @@
 <table>
     <tr>
         <td>Track:</td>
-        <td>{{ report.track.circuit }}</td>
+        <td>{{ tracks[report.track].circuit }}</td>
         <td>
             <ul>
                 <li ng-repeat="track in tracks">
-                    <a ng-click="selectTrack(track)">{{ track.circuit }} ({{ track.miles }})</a>
+                    <a ng-click="selectTrack($index)">{{ track.circuit }} ({{ track.miles }})</a>
                 </li>
             </ul>
         </td>
