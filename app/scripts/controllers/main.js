@@ -33,6 +33,10 @@ angular.module('forzaLeagueApp')
     this.getDrivers = function() {
       return drivers;
     };
+    
+    this.getDriver = function(id) {
+      return drivers[id];
+    };
 
   })
   .service('trackService', function($firebase) {
@@ -78,6 +82,7 @@ angular.module('forzaLeagueApp')
               $scope.standings[race.result[result].driver.id].wins =
                   $scope.standings[race.result[result].driver.id].wins + 1;
             }
+            
 			if (parseInt(result) <= 2) {
               $scope.standings[race.result[result].driver.id].podiums =
                   $scope.standings[race.result[result].driver.id].podiums + 1;
@@ -106,4 +111,7 @@ angular.module('forzaLeagueApp')
   .controller('RaceReportOverviewCtrl', function ($scope, trackService, raceReportService) {
     $scope.raceReports = raceReportService.getRaceReports();
     $scope.tracks = trackService.getTracks();
+  })
+  .controller('DriverCtrl', function ($scope, $routeParams, driverService) {
+    $scope.driver = driverService.getDriver($routeParams.id);
   });

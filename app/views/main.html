@@ -19,7 +19,7 @@
     <tr ng-repeat="driver in standings | orderBy: '-points'">
         <td>{{ $index + 1 }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png" /></td>
-        <td>{{ driver.name }}</td>
+        <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
         <td>{{ driver.wins }}</td>
         <td>{{ driver.podiums }}</td>
         <td>{{ driver.points }}</td>
