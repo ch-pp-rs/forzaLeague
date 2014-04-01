@@ -50,6 +50,10 @@ angular.module('forzaLeagueApp')
     this.getRaceReports = function() {
       return $firebase(new Firebase(raceReportUrl));
     };
+    
+    this.getRaceReport = function(id) {
+      return $firebase(new Firebase(raceReportUrl + '/' + id));
+    };
 
     this.saveRaceReport = function(report) {
       var ref = new Firebase(raceReportUrl + report.date + '/');
@@ -98,7 +102,7 @@ angular.module('forzaLeagueApp')
     $scope.drivers = driverService.getDrivers();
 
     $scope.report.result = [];
-    $scope.report.result.push({'finishPos': 1, 'driver': ''});
+    $scope.report.result.push({'finishPos': 0, 'driver': ''});
 
     $scope.selectTrack = function (trackId) {
       $scope.report.track = trackId;
@@ -110,6 +114,10 @@ angular.module('forzaLeagueApp')
   })
   .controller('RaceReportOverviewCtrl', function ($scope, trackService, raceReportService) {
     $scope.raceReports = raceReportService.getRaceReports();
+    $scope.tracks = trackService.getTracks();
+  })
+  .controller('RaceReportCtrl', function ($scope, $routeParams, trackService, raceReportService) {
+    $scope.report = raceReportService.getRaceReport($routeParams.id);
     $scope.tracks = trackService.getTracks();
   })
   .controller('DriverCtrl', function ($scope, $routeParams, driverService) {
