@@ -8,11 +8,20 @@
 </div>
 
 <table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th>Driver</th>
+		<th>Wins</th>
+		<th>Podiums</th>
+		<th>Points</th>
+	</tr>
     <tr ng-repeat="driver in standings | orderBy: '-points'">
         <td>{{ $index + 1 }}</td>
-        <td><img src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png" /></td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png" /></td>
         <td>{{ driver.name }}</td>
         <td>{{ driver.wins }}</td>
+        <td>{{ driver.podiums }}</td>
         <td>{{ driver.points }}</td>
     </tr>
 </table>

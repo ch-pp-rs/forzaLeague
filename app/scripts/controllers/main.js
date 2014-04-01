@@ -61,6 +61,7 @@ angular.module('forzaLeagueApp')
     for (var driver in $scope.standings) {
       $scope.standings[driver].points = 0;
       $scope.standings[driver].wins = 0;
+      $scope.standings[driver].podiums = 0;
     }
 
     $scope.raceReports = raceReportService.getRaceReports();
@@ -76,6 +77,10 @@ angular.module('forzaLeagueApp')
             if (parseInt(result) === 0) {
               $scope.standings[race.result[result].driver.id].wins =
                   $scope.standings[race.result[result].driver.id].wins + 1;
+            }
+			if (parseInt(result) <= 2) {
+              $scope.standings[race.result[result].driver.id].podiums =
+                  $scope.standings[race.result[result].driver.id].podiums + 1;
             }
           }
         }
