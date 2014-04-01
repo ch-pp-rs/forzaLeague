@@ -1,0 +1,25 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li class="active"><a ng-href="#">Home</a></li>
+        <li><a href="/#/add-race-report">Add race report</a></li>
+    </ul>
+    <h3 class="text-muted">Forza League</h3>
+</div>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Circuit</th>
+        <th>Winner</th>
+    </tr>
+    <tr ng-repeat="race in raceReports">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ race.date }}</td>
+        <td>{{ tracks[race.track].circuit }}</td>
+        <td>{{ race.result[0].driver.name }}</td>
+    </tr>
+</table>
+
+<div class="footer">
+</div>

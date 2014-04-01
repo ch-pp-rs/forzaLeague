@@ -2,12 +2,21 @@
   <ul class="nav nav-pills pull-right">
     <li class="active"><a ng-href="#">Home</a></li>
     <li><a href="/#/add-race-report">Add race report</a></li>
+    <li><a href="/#/race-report-overview">Race reports</a></li>
   </ul>
-  <h3 class="text-muted">forzaLeague</h3>
+  <h3 class="text-muted">Forza League</h3>
 </div>
 
-<div class="jumbotron">
-</div>
+<table>
+    <tr ng-repeat="driver in standings | orderBy: '-points'">
+        <td>{{ $index + 1 }}</td>
+        <td><img src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png" /></td>
+        <td>{{ driver.name }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.points }}</td>
+    </tr>
+</table>
 
 <div class="footer">
 </div>
+

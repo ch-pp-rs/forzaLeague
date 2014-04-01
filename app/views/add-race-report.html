@@ -2,7 +2,7 @@
     <ul class="nav nav-pills pull-right">
         <li class="active"><a ng-href="#">Home</a></li>
     </ul>
-    <h3 class="text-muted">forzaLeague</h3>
+    <h3 class="text-muted">Forza League</h3>
 </div>
 
 <table>
@@ -10,9 +10,9 @@
         <td>Track:</td>
         <td>{{ tracks[report.track].circuit }}</td>
         <td>
-            <ul>
-                <li ng-repeat="track in tracks">
-                    <a ng-click="selectTrack($index)">{{ track.circuit }} ({{ track.miles }})</a>
+            <ul class="selectTrack">
+                <li ng-repeat="track in tracks | orderBy: track.id">
+                    <a ng-click="selectTrack(track.id)">{{ track.circuit }} ({{ track.miles }})</a>
                 </li>
             </ul>
         </td>
@@ -28,14 +28,14 @@
     <tr>
         <td>Result:</td>
         <td>
-            <ul>
+            <ol>
                 <li ng-repeat="result in report.result">
-                    {{ result.finishPos + 1}} -
                     <select ng-model="result.driver" ng-options="driver.name for driver in drivers">
                         <option value="">Non-league member</option>
                     </select>
                 </li>
-            </ul>
+                <a ng-click="report.result.push({'finishPos': report.result.length, 'driver': ''})">+</a>
+            </ol>
         </td>
     </tr>
 </table>

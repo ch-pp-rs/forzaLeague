@@ -17,6 +17,10 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/add-race-report.html',
         controller: 'AddRaceReportCtrl'
       })
+      .when('/race-report-overview', {
+        templateUrl: 'views/race-report-overview.html',
+        controller: 'RaceReportOverviewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
