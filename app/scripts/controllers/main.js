@@ -10,7 +10,7 @@ angular.module('forzaLeagueApp')
       },
       {
         'id': 1,
-        'name': 'Jason Jefferies',
+        'name': 'Jason Jefferey',
         'gamertag': 'M1lhous3'
       },
       {
