@@ -20,13 +20,18 @@ angular.module('forzaLeagueApp')
       },
       {
         'id': 3,
-        'name': 'Ben Grimmwood',
+        'name': 'Ben Grimwood',
         'gamertag': 'MysticTriEdge'
       },
       {
         'id': 4,
-        'name': 'Thuin Kahn',
+        'name': 'Thuin Khan',
         'gamertag': 'SacredMr T'
+      },
+      {
+        'id': 5,
+        'name': 'Ricky Clegg',
+        'gamertag': ''
       }
     ];
 
