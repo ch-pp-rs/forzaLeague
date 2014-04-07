@@ -9,12 +9,14 @@
     <tr>
         <th></th>
         <th>Date</th>
+        <th>Car Class</th>
         <th>Circuit</th>
         <th>Winner</th>
     </tr>
     <tr ng-repeat="race in raceReports">
         <td>{{ $index + 1 }}</td>
         <td>{{ race.date }}</td>
+        <td>{{ race.carClass }}</td>
         <td><a href="/#/race-report/{{race.date}}">{{ tracks[race.track].circuit }}</a></td>
         <td>{{ race.result[0].driver.name }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.result[0].driver.gamertag }}/avatarpic-s.png" /></td>
