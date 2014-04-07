@@ -17,6 +17,7 @@
         <td>{{ race.date }}</td>
         <td><a href="/#/race-report/{{race.date}}">{{ tracks[race.track].circuit }}</a></td>
         <td>{{ race.result[0].driver.name }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.result[0].driver.gamertag }}/avatarpic-s.png" /></td>
     </tr>
 </table>
 
