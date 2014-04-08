@@ -1,6 +1,5 @@
 {
   "node": true,
-  "firebase": true,
   "browser": true,
   "esnext": true,
   "bitwise": true,
@@ -20,6 +19,8 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "firebase": true,
+    "Firebase": true
   }
 }

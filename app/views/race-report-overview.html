@@ -1,25 +1,23 @@
-<div class="header">
-    <ul class="nav nav-pills pull-right">
-        <li class="active"><a ng-href="#">Home</a></li>
-    </ul>
-    <h3 class="text-muted">Forza League</h3>
-</div>
+<div ng-include="'views/header.html'"></div>
 
 <table>
     <tr>
         <th></th>
-        <th>Date</th>
         <th>Car Class</th>
         <th>Circuit</th>
+        <th></th>
+        <th>Fastest Lap</th>
+        <th></th>
         <th>Winner</th>
     </tr>
     <tr ng-repeat="race in raceReports">
-        <td>{{ $index + 1 }}</td>
-        <td>{{ race.date }}</td>
+        <td width="70">Race {{ $index + 1 }}</td>
         <td>{{ race.carClass }}</td>
         <td><a href="/#/race-report/{{race.date}}">{{ tracks[race.track].circuit }}</a></td>
-        <td>{{ race.result[0].driver.name }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.fastestLapDriver.gamertag }}/avatarpic-s.png" /></td>
+        <td>{{ race.fastestLapDriver.name }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.result[0].driver.gamertag }}/avatarpic-s.png" /></td>
+        <td>{{ race.result[0].driver.name }}</td>
     </tr>
 </table>
 

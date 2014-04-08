@@ -1,0 +1,9 @@
+<div ng-include="'views/header.html'"></div>
+<div>
+    <ul>
+        <li ng-repeat="track in tracksToSelectFrom">
+            <a ng-hide="userVoted" ng-click="voteForTrack($index)">{{ track.circuit }} ({{ track.miles }}) VOTES:{{track.vote}}</a>
+            <span ng-show="userVoted">{{ track.circuit }} ({{ track.miles }} miles) VOTES:{{track.vote}}</span>
+        </li>
+    </ul>
+</div>

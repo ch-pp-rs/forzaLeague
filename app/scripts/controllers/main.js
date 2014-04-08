@@ -87,6 +87,7 @@ angular.module('forzaLeagueApp')
     $scope.raceReports.$on('loaded', function(raceReports) {
       for (var raceReport in raceReports) {
         race = raceReports[raceReport];
+
         for (var result in race.result) {
           if ($scope.standings[race.result[result].driver.id]) {
             $scope.standings[race.result[result].driver.id].points =
@@ -94,16 +95,54 @@ angular.module('forzaLeagueApp')
 
             if (parseInt(result) === 0) {
               $scope.standings[race.result[result].driver.id].wins =
-                  $scope.standings[race.result[result].driver.id].wins + 1;
+                $scope.standings[race.result[result].driver.id].wins + 1;
             }
-            
-			if (parseInt(result) <= 2) {
+
+			      if (parseInt(result) <= 2) {
               $scope.standings[race.result[result].driver.id].podiums =
-                  $scope.standings[race.result[result].driver.id].podiums + 1;
+                $scope.standings[race.result[result].driver.id].podiums + 1;
             }
           }
         }
       }
+    });
+  })
+  .controller('TrackVoteCtrl', function ($scope, trackService, $firebase) {
+    var trackVoteUrl = 'https://forza.firebaseio.com/trackVote/',
+        ref = new Firebase(trackVoteUrl);
+
+    $scope.tracksToSelectFrom = $firebase(ref);
+
+    $scope.voteForTrack = function(id) {
+      var voteRef = new Firebase(trackVoteUrl + String(id));
+
+      $scope.tracksToSelectFrom[id].vote = $scope.tracksToSelectFrom[id].vote + 1;
+      voteRef.update($scope.tracksToSelectFrom[id]);
+
+      $scope.userVoted = true;
+    };
+  })
+  .controller('SetupTrackVoteCtrl', function ($scope, trackService) {
+    var trackVoteUrl = 'https://forza.firebaseio.com/trackVote/',
+        ref = new Firebase(trackVoteUrl);
+
+    $scope.tracks = trackService.getTracks();
+
+    $scope.tracks.$on('loaded', function(tracks) {
+      var i, randNum, allRandNum = [], tracksToSelectFrom = [];
+
+      for (i = 0; i < 5; i++) {
+        randNum = Math.round(Math.random()*(tracks.length-1));
+
+        if (allRandNum.indexOf(randNum) === -1) {
+          console.log(randNum, tracks[randNum]);
+          allRandNum.push(randNum);
+          tracks[randNum].vote = 0;
+          tracksToSelectFrom.push(tracks[randNum]);
+        }
+      }
+      ref.update(tracksToSelectFrom);
+      $scope.message = 'Tracks successfully loaded.';
     });
   })
   .controller('AddRaceReportCtrl', function ($scope, trackService, raceReportService, driverService) {

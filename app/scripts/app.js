@@ -13,6 +13,17 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/rules', {
+        templateUrl: 'views/rules.html'
+      })
+      .when('/track-vote', {
+        templateUrl: 'views/track-vote.html',
+        controller: 'TrackVoteCtrl'
+      })
+      .when('/setup-track-vote', {
+        templateUrl: 'views/setup-track-vote.html',
+        controller: 'SetupTrackVoteCtrl'
+      })
       .when('/add-race-report', {
         templateUrl: 'views/add-race-report.html',
         controller: 'AddRaceReportCtrl'
@@ -24,7 +35,7 @@ angular.module('forzaLeagueApp', [
       .when('/race-report/:id', {
         templateUrl: 'views/race-report.html',
         controller: 'RaceReportCtrl'
-      })     
+      })
       .when('/driver/:id', {
         templateUrl: 'views/driver.html',
         controller: 'DriverCtrl'
