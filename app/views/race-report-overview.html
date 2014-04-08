@@ -13,7 +13,7 @@
     <tr ng-repeat="race in raceReports">
         <td width="70">Race {{ $index + 1 }}</td>
         <td>{{ race.carClass }}</td>
-        <td><a href="/#/race-report/{{race.date}}">{{ tracks[race.track].circuit }}</a></td>
+        <td><a href="/#/race-report/{{race.id}}">{{ tracks[race.track].circuit }}</a></td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.fastestLapDriver.gamertag }}/avatarpic-s.png" /></td>
         <td>{{ race.fastestLapDriver.name }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.result[0].driver.gamertag }}/avatarpic-s.png" /></td>

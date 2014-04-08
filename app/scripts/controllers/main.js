@@ -66,7 +66,7 @@ angular.module('forzaLeagueApp')
     };
 
     this.saveRaceReport = function(report) {
-      var ref = new Firebase(raceReportUrl + report.date + '/');
+      var ref = new Firebase(raceReportUrl + report.id + '/');
 
       ref.update(angular.copy(report));
     };
