@@ -1,10 +1,14 @@
 <div ng-include="'views/header.html'"></div>
 <h1>Vote For Next Track</h1>
-<ul>
+<ul class="track-vote">
     <li ng-repeat="track in tracksToSelectFrom">
-        <a ng-hide="userVoted" ng-click="voteForTrack($index)">{{ track.circuit }} ({{ track.miles }} miles)
-            VOTES:{{track.vote}}</a>
-        <span ng-show="userVoted">{{ track.circuit }} ({{ track.miles }} miles) VOTES:{{track.vote}}</span>
+        <img ng-src="/images/numbers/{{ track.vote }}.png" height="100" />
+        <a ng-hide="userVoted" ng-click="voteForTrack($index)"><h3>{{ track.circuit }}</h3></a>
+        <span ng-show="userVoted"><h3>{{ track.circuit }}</h3></span>
+        {{ track.city }}, {{ track.country }}
+        <br />
+        {{ track.miles }} miles
+        <br />
     </li>
 </ul>
 
