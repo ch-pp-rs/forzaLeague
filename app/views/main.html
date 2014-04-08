@@ -4,18 +4,19 @@
     Next race this evening at 9pm.
 </div>
 
+<h2>Standings</h2>
 <table>
-	<tr>
-		<th></th>
-		<th></th>
-		<th>Driver</th>
-		<th>Wins</th>
-		<th>Podiums</th>
-		<th>Points</th>
-	</tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Driver</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Points</th>
+    </tr>
     <tr ng-repeat="driver in standings | orderBy: '-points'">
         <td>{{ $index + 1 }}</td>
-        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png" /></td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
         <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
         <td>{{ driver.wins }}</td>
         <td>{{ driver.podiums }}</td>
