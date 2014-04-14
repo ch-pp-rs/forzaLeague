@@ -34,7 +34,7 @@ angular.module('forzaLeagueApp')
         'gamertag': 'rickyclegg'
       },
       {
-        'id': 5,
+        'id': 6,
         'name': 'Billy Pittard',
         'gamertag': 'Bonzai Bill'
       }
@@ -73,7 +73,7 @@ angular.module('forzaLeagueApp')
   })
   .controller('MainCtrl', function ($scope, raceReportService, driverService) {
     var race,
-        points = [10, 6, 4, 3, 2, 1];
+        points = [10, 8, 6, 4, 2, 1, 0];
 
     $scope.standings = driverService.getDrivers();
     for (var driver in $scope.standings) {
