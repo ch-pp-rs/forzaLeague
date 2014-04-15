@@ -12,6 +12,8 @@
         <th>Driver</th>
         <th>Wins</th>
         <th>Podiums</th>
+        <th>Fastest Laps</th>
+        <th>Penalty Points</th>
         <th>Points</th>
     </tr>
     <tr ng-repeat="driver in standings | orderBy: '-points'">
@@ -20,6 +22,8 @@
         <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
         <td>{{ driver.wins }}</td>
         <td>{{ driver.podiums }}</td>
+        <td>{{ driver.fastestLaps }}</td>
+        <td></td>
         <td>{{ driver.points }}</td>
     </tr>
 </table>
