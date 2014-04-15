@@ -43,6 +43,10 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/driver.html',
         controller: 'DriverCtrl'
       })
+      .when('/leaderboards/', {
+        templateUrl: 'views/leaderboards.html',
+        controller: 'LeaderboardsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
