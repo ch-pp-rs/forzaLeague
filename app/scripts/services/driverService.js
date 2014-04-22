@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .service('driverService', function () {
+  .service('driverService', function (raceReportService) {
     var drivers = [
       {
         'id': 0,
@@ -46,5 +46,51 @@ angular.module('forzaLeagueApp')
 
     this.getDriver = function (id) {
       return drivers[id];
+    };
+
+    this.getDriverWithStats = function (id) {
+      var race,
+          points = [10, 8, 6, 4, 2, 1, 0],
+          raceReports = raceReportService.getRaceReports(),
+          driver = this.getDriver(id);
+
+      driver.races = 0;
+      driver.points = 0;
+      driver.wins = 0;
+      driver.podiums = 0;
+      driver.fastestLaps = 0;
+
+      raceReports.$on('loaded', function(raceReports) {
+        for (var raceReport in raceReports) {
+
+          race = raceReports[raceReport];
+
+          for (var result in race.result) {
+            if (driver.id === race.result[result].driver.id) {
+              driver.points = driver.points + points[result];
+
+              if (parseInt(result) === 0) {
+                driver.wins = driver.wins + 1;
+              }
+
+              if (parseInt(result) <= 2) {
+                driver.podiums = driver.podiums + 1;
+              }
+            }
+          }
+
+          if (driver.id === race.fastestLapDriver.id) {
+            driver.fastestLaps = driver.fastestLaps + 1;
+          }
+
+          driver.races = driver.races + 1;
+        }
+
+        driver.winPercentage = (driver.wins/driver.races)*100;
+        driver.podiumPercentage = (driver.podiums/driver.races)*100;
+        driver.fastestLapPercentage = (driver.fastestLaps/driver.races)*100;
+      });
+
+      return driver;
     };
   });
