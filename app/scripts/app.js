@@ -13,9 +13,6 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/tv', {
-        templateUrl: 'views/tv.html'
-      })
       .when('/rules', {
         templateUrl: 'views/rules.html'
       })
