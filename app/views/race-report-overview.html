@@ -4,6 +4,7 @@
     <tr>
         <th></th>
         <th>Car Class</th>
+        <th>Type</th>
         <th>Circuit</th>
         <th></th>
         <th>Fastest Lap</th>
@@ -13,6 +14,7 @@
     <tr ng-repeat="race in raceReports | orderBy: 'id'">
         <td width="70">Race {{ (race.id*1) + 1 }}</td>
         <td>{{ race.carClass }}</td>
+        <td>{{ race.type }}</td>
         <td><a href="/#/race-report/{{race.id}}">{{ tracks[race.track].circuit }}</a></td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.fastestLapDriver.gamertag }}/avatarpic-s.png" /></td>
         <td>{{ race.fastestLapDriver.name }}</td>
