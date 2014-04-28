@@ -90,6 +90,7 @@ angular.module('forzaLeagueApp')
 
           raceResult.track = raceReports[raceReport].track;
           raceResult.id = parseInt(raceReports[raceReport].id) + 1;
+          raceResult.type = raceReports[raceReport].type;
 
           driver.raceResults.push(raceResult);
         }

@@ -15,10 +15,12 @@
 
     <table style="clear:both;">
         <tr ng-repeat="race in driver.raceResults">
+            <td>Round {{ race.id }} ({{ race.type }})</td>
             <td>
-                Race {{ race.id }}
+                <a ng-href="/#/race-report/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a>
+                ({{ tracks[race.track].city }}, {{ tracks[race.track].country }})
+
             </td>
-            <td><a ng-href="/#/race-report/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a></td>
             <td>{{ race.position }}<ng-pluralize count="race.position" offset="0"
                                                  when="{'1': 'st',
                                                      '2': 'nd',
