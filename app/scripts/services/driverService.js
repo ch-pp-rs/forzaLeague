@@ -50,6 +50,7 @@ angular.module('forzaLeagueApp')
 
     this.getDriverWithStats = function (id) {
       var race,
+          raceResult,
           points = [10, 8, 6, 4, 2, 1, 0],
           raceReports = raceReportService.getRaceReports(),
           driver = this.getDriver(id);
@@ -59,15 +60,17 @@ angular.module('forzaLeagueApp')
       driver.wins = 0;
       driver.podiums = 0;
       driver.fastestLaps = 0;
+      driver.raceResults = [];
 
       raceReports.$on('loaded', function(raceReports) {
         for (var raceReport in raceReports) {
-
+          raceResult = {};
           race = raceReports[raceReport];
 
           for (var result in race.result) {
             if (driver.id === race.result[result].driver.id) {
               driver.points = driver.points + points[result];
+              raceResult.position = parseInt(result) + 1;
 
               if (parseInt(result) === 0) {
                 driver.wins = driver.wins + 1;
@@ -84,7 +87,16 @@ angular.module('forzaLeagueApp')
           }
 
           driver.races = driver.races + 1;
+
+          console.log(race.result[result]);
+
+          raceResult.track = raceReports[raceReport].track;
+          raceResult.id = parseInt(raceReports[raceReport].id) + 1;
+
+          driver.raceResults.push(raceResult);
         }
+
+        console.log(driver);
 
         driver.winPercentage = (driver.wins/driver.races)*100;
         driver.podiumPercentage = (driver.podiums/driver.races)*100;

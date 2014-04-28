@@ -11,6 +11,18 @@
         <li>Points: {{ driver.points }}</li>
         <li>Fastest Laps: {{ driver.fastestLaps }} ({{ driver.fastestLapPercentage | number:0 }}%)</li>
     </ul>
+
+    <ul style="clear:both;">
+        <li ng-repeat="race in driver.raceResults">
+            {{ race.position }}<ng-pluralize count="race.position" offset="0"
+                                              when="{'0': '',
+                                                     '1': 'st',
+                                                     '2': 'nd',
+                                                     '3': 'rd',
+                                                     'other': 'th'}"></ng-pluralize>
+            in Race {{ race.id }} (<a ng-href="/#/race-report/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a>)
+        </li>
+    </ul>
 </div>
 <br /><br />
 <div class="footer">
