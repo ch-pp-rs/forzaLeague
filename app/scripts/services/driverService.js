@@ -88,15 +88,11 @@ angular.module('forzaLeagueApp')
 
           driver.races = driver.races + 1;
 
-          console.log(race.result[result]);
-
           raceResult.track = raceReports[raceReport].track;
           raceResult.id = parseInt(raceReports[raceReport].id) + 1;
 
           driver.raceResults.push(raceResult);
         }
-
-        console.log(driver);
 
         driver.winPercentage = (driver.wins/driver.races)*100;
         driver.podiumPercentage = (driver.podiums/driver.races)*100;

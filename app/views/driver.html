@@ -1,9 +1,10 @@
 <div ng-include="'views/header.html'"></div>
 
 <div>
+    <h1>{{ driver.name }}</h1>
 	<img ng-src="http://avatar.xboxlive.com/avatar/{{driver.gamertag}}/avatar-body.png" align="left" />
-	<h1>{{ driver.name }}</h1>
 
+    <br /><br /><br />
     <ul>
         <li>Races: {{ driver.races }}</li>
         <li>Wins: {{ driver.wins }} ({{ driver.winPercentage | number:0 }}%)</li>
@@ -15,8 +16,7 @@
     <ul style="clear:both;">
         <li ng-repeat="race in driver.raceResults">
             {{ race.position }}<ng-pluralize count="race.position" offset="0"
-                                              when="{'0': '',
-                                                     '1': 'st',
+                                              when="{'1': 'st',
                                                      '2': 'nd',
                                                      '3': 'rd',
                                                      'other': 'th'}"></ng-pluralize>
