@@ -1,9 +1,10 @@
 <div ng-include="'views/header.html'"></div>
 
 <div>
+    <h1>{{ driver.name }}</h1>
 	<img ng-src="http://avatar.xboxlive.com/avatar/{{driver.gamertag}}/avatar-body.png" align="left" />
-	<h1>{{ driver.name }}</h1>
 
+    <br /><br /><br />
     <ul>
         <li>Races: {{ driver.races }}</li>
         <li>Wins: {{ driver.wins }} ({{ driver.winPercentage | number:0 }}%)</li>
@@ -11,6 +12,23 @@
         <li>Points: {{ driver.points }}</li>
         <li>Fastest Laps: {{ driver.fastestLaps }} ({{ driver.fastestLapPercentage | number:0 }}%)</li>
     </ul>
+
+    <table style="clear:both;">
+        <tr ng-repeat="race in driver.raceResults">
+            <td>Round {{ race.id }} ({{ race.type }})</td>
+            <td>
+                <a ng-href="/#/race-report/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a>
+                ({{ tracks[race.track].city }}, {{ tracks[race.track].country }})
+
+            </td>
+            <td>{{ race.position }}<ng-pluralize count="race.position" offset="0"
+                                                 when="{'1': 'st',
+                                                     '2': 'nd',
+                                                     '3': 'rd',
+                                                     'other': 'th'}"></ng-pluralize>
+            </td>
+        </tr>
+    </table>
 </div>
 <br /><br />
 <div class="footer">
