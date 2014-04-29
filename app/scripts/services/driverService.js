@@ -37,6 +37,11 @@ angular.module('forzaLeagueApp')
         'id': 6,
         'name': 'Billy Pittard',
         'gamertag': 'Bonzai Bill'
+      },
+      {
+        'id': 7,
+        'name': 'Martin Smith',
+        'gamertag': ''
       }
     ];
 
@@ -79,20 +84,19 @@ angular.module('forzaLeagueApp')
               if (parseInt(result) <= 2) {
                 driver.podiums = driver.podiums + 1;
               }
+
+              driver.races = driver.races + 1;
+
+              raceResult.track = raceReports[raceReport].track;
+              raceResult.id = parseInt(raceReports[raceReport].id) + 1;
+              raceResult.type = raceReports[raceReport].type;
+              driver.raceResults.push(raceResult);
             }
           }
 
           if (driver.id === race.fastestLapDriver.id) {
             driver.fastestLaps = driver.fastestLaps + 1;
           }
-
-          driver.races = driver.races + 1;
-
-          raceResult.track = raceReports[raceReport].track;
-          raceResult.id = parseInt(raceReports[raceReport].id) + 1;
-          raceResult.type = raceReports[raceReport].type;
-
-          driver.raceResults.push(raceResult);
         }
 
         driver.winPercentage = (driver.wins/driver.races)*100;
