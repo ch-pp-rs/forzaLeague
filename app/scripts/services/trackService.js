@@ -2,7 +2,7 @@
 
 angular.module('forzaLeagueApp')
   .service('trackService', function($firebase) {
-    this.getTracks = function(){
+    this.getTracks = function () {
       return $firebase(new Firebase('https://forza.firebaseio.com/tracks'));
     };
   });
