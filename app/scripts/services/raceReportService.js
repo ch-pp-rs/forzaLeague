@@ -9,7 +9,7 @@ angular.module('forzaLeagueApp')
     };
 
     this.getRaceReport = function (id) {
-      return $firebase(new Firebase(raceReportUrl + '/' + id));
+      return $firebase(new Firebase(raceReportUrl + id));
     };
 
     this.saveRaceReport = function (report) {
