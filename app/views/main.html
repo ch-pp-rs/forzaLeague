@@ -1,7 +1,11 @@
 <div ng-include="'views/header.html'"></div>
 
 <div class="jumbotron">
-    
+    Autocross: American Muscle Autocross<br />
+    TT: Le Mans Circuit de la Sarthe Old Mulsanne Circuit (Class A)<br />
+    <br />
+    Deadline: 10pm Monday 5th May
+
 </div>
 
 <div fl-leaderboard fl-title="'American Muscle Autocross'" fl-type="'auto'" fl-location="'76'" fl-track="''"></div>
@@ -14,6 +18,7 @@
         <th></th>
         <th></th>
         <th>Driver</th>
+        <th>Races</th>
         <th>Wins</th>
         <th>Podiums</th>
         <th>Fastest Laps</th>
@@ -24,6 +29,7 @@
         <td>{{ $index + 1 }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
         <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
+        <td>{{ driver.races }}</td>
         <td>{{ driver.wins }}</td>
         <td>{{ driver.podiums }}</td>
         <td>{{ driver.fastestLaps }}</td>

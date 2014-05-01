@@ -19,8 +19,6 @@ angular.module('forzaLeagueApp')
             scope.results = data.Results;
           }
         );
-
-        console.log(scope.flTitle);
       }
     };
   });
