@@ -37,11 +37,6 @@ angular.module('forzaLeagueApp')
         'id': 6,
         'name': 'Billy Pittard',
         'gamertag': 'Bonzai Bill'
-      },
-      {
-        'id': 7,
-        'name': 'Martin Smith',
-        'gamertag': ''
       }
     ];
 
