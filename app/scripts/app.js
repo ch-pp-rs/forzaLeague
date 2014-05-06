@@ -24,6 +24,10 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/setup-track-vote.html',
         controller: 'SetupTrackVoteCtrl'
       })
+      .when('/unused-tracks', {
+        templateUrl: 'views/unused-tracks.html',
+        controller: 'UnusedTracksCtrl'
+      })
       .when('/add-race-report', {
         templateUrl: 'views/add-race-report.html',
         controller: 'AddRaceReportCtrl'
