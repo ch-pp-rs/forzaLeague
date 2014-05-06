@@ -3,7 +3,7 @@
 <table>
     <tr>
         <th></th>
-        <th>Class</th>
+        <th>Car Class</th>
         <th>Type</th>
         <th>Circuit</th>
         <th></th>
@@ -12,7 +12,7 @@
         <th>Winner</th>
     </tr>
     <tr ng-repeat="race in raceReports | orderBy: 'id'">
-        <td width="70">Race {{ race.id }}</td>
+        <td width="70">Race {{ (race.id*1) + 1 }}</td>
         <td>{{ race.carClass }}</td>
         <td>{{ race.type }}</td>
         <td><a href="/#/race-report/{{race.id}}">{{ tracks[race.track].circuit }}</a></td>

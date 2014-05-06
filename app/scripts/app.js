@@ -24,6 +24,10 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/setup-track-vote.html',
         controller: 'SetupTrackVoteCtrl'
       })
+      .when('/unused-tracks', {
+        templateUrl: 'views/unused-tracks.html',
+        controller: 'UnusedTracksCtrl'
+      })
       .when('/add-race-report', {
         templateUrl: 'views/add-race-report.html',
         controller: 'AddRaceReportCtrl'
@@ -39,6 +43,10 @@ angular.module('forzaLeagueApp', [
       .when('/driver/:id', {
         templateUrl: 'views/driver.html',
         controller: 'DriverCtrl'
+      })
+      .when('/leaderboards/', {
+        templateUrl: 'views/leaderboards.html',
+        controller: 'LeaderboardsCtrl'
       })
       .otherwise({
         redirectTo: '/'
