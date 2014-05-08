@@ -2,6 +2,7 @@
 
 angular.module('forzaLeagueApp')
   .controller('UnusedTracksCtrl', function ($scope, trackService) {
-    $scope.tracks = trackService.getUnusedTracks();
-
+    trackService.getUnusedTracks().then(function(tracks) {
+      $scope.tracks = tracks;
+    });
   });
