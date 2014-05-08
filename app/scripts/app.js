@@ -28,6 +28,9 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/unused-tracks.html',
         controller: 'UnusedTracksCtrl'
       })
+      .when('/race-classes', {
+        templateUrl: 'views/classes.html'
+      })
       .when('/add-race-report', {
         templateUrl: 'views/add-race-report.html',
         controller: 'AddRaceReportCtrl'
