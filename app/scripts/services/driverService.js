@@ -31,7 +31,7 @@ angular.module('forzaLeagueApp')
       {
         'id': 5,
         'name': 'Ricky Clegg',
-        'gamertag': 'rickyclegg'
+        'gamertag': 'kloobe'
       },
       {
         'id': 6,
