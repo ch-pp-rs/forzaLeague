@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .controller('TrackVoteCtrl', function ($scope, trackService, $firebase) {
+  .controller('TrackVoteCtrl', function ($scope, $firebase) {
     var trackVoteUrl = 'https://forza.firebaseio.com/trackVote/',
         ref = new Firebase(trackVoteUrl);
 

@@ -3,5 +3,7 @@
 angular.module('forzaLeagueApp')
   .controller('RaceReportCtrl', function ($scope, $routeParams, trackService, raceReportService) {
     $scope.report = raceReportService.getRaceReport($routeParams.id);
-    $scope.tracks = trackService.getTracks();
+    trackService.getTracks().then(function(data){
+      $scope.tracks = data;
+    });
   });

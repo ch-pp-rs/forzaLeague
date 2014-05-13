@@ -1,16 +1,22 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .service('trackService', function($firebase, raceReportService, $q) {
+  .service('trackService', function($firebase, seasonReportService, $http, $q) {
     function getTracks () {
-      return $firebase(new Firebase('https://forza.firebaseio.com/tracks'));
+      var deferred = $q.defer();
+
+      $http.get('/data/tracks.json').then(function(res){
+        deferred.resolve(res.data);
+      });
+
+      return deferred.promise;
     }
 
     function getUnusedTracks () {
       var deferred = $q.defer(),
           tracksUsed = [],
           tracksNotUsed = [],
-          raceReports = raceReportService.getRaceReports(),
+          raceReports = seasonReportService.getCurrentSeason(),
           tracks = getTracks();
 
       raceReports.$on('loaded', function(raceReports) {
@@ -20,7 +26,7 @@ angular.module('forzaLeagueApp')
       });
 
       raceReports.$on('loaded', function() {
-        tracks.$on('loaded', function(tracks) {
+        tracks.then(function(tracks) {
           for (var track in tracks) {
             if (tracksUsed.indexOf(tracks[track].id) === -1) {
               tracksNotUsed.push(tracks[track]);

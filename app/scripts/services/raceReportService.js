@@ -4,10 +4,6 @@ angular.module('forzaLeagueApp')
   .service('raceReportService', function ($firebase) {
     var raceReportUrl = 'https://forza.firebaseio.com/raceReports/';
 
-    this.getRaceReports = function () {
-      return $firebase(new Firebase(raceReportUrl));
-    };
-
     this.getRaceReport = function (id) {
       return $firebase(new Firebase(raceReportUrl + id));
     };

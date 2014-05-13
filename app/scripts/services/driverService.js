@@ -1,50 +1,56 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .service('driverService', function (raceReportService) {
-    var drivers = [
-      {
-        'id': 0,
-        'name': 'Ben Smith',
-        'gamertag': 'guitarben'
-      },
-      {
-        'id': 1,
-        'name': 'Jason Jefferey',
-        'gamertag': 'M1lhous3'
-      },
-      {
-        'id': 2,
-        'name': 'Ben Chaplin',
-        'gamertag': 'AxelTron'
-      },
-      {
-        'id': 3,
-        'name': 'Ben Grimwood',
-        'gamertag': 'MysticTriEdge'
-      },
-      {
-        'id': 4,
-        'name': 'Thuin Khan',
-        'gamertag': 'SacredMr T'
-      },
-      {
-        'id': 5,
-        'name': 'Ricky Clegg',
-        'gamertag': 'kloobe'
-      },
-      {
-        'id': 6,
-        'name': 'Billy Pittard',
-        'gamertag': 'Bonzai Bill'
-      }
-    ];
+  .service('driverService', function (seasonReportService) {
+    function getDrivers () {
+      var drivers = [
+        {
+          'id': 0,
+          'name': 'Ben Smith',
+          'gamertag': 'guitarben'
+        },
+        {
+          'id': 1,
+          'name': 'Jason Jefferey',
+          'gamertag': 'M1lhous3'
+        },
+        {
+          'id': 2,
+          'name': 'Ben Chaplin',
+          'gamertag': 'AxelTron'
+        },
+        {
+          'id': 3,
+          'name': 'Ben Grimwood',
+          'gamertag': 'MysticTriEdge'
+        },
+        {
+          'id': 4,
+          'name': 'Thuin Khan',
+          'gamertag': 'SacredMr T'
+        },
+        {
+          'id': 5,
+          'name': 'Ricky Clegg',
+          'gamertag': 'kloobe'
+        },
+        {
+          'id': 6,
+          'name': 'Billy Pittard',
+          'gamertag': 'Bonzai Bill'
+        }
+      ];
+
+      return drivers;
+    }
 
     this.getDrivers = function () {
-      return drivers;
+      return getDrivers();
     };
 
     this.getDriver = function (id) {
+      var drivers = getDrivers();
+
       return drivers[id];
     };
 
@@ -52,7 +58,7 @@ angular.module('forzaLeagueApp')
       var race,
           raceResult,
           points = [10, 8, 6, 4, 2, 1, 0],
-          raceReports = raceReportService.getRaceReports(),
+          raceReports = seasonReportService.getCurrentSeason(),
           driver = this.getDriver(id);
 
       driver.races = 0;

@@ -2,7 +2,9 @@
 
 angular.module('forzaLeagueApp')
   .controller('AddRaceReportCtrl', function ($scope, trackService, raceReportService, driverService) {
-    $scope.tracks = trackService.getTracks();
+    trackService.getTracks().then(function(data){
+         $scope.tracks = data;
+    });
 
     $scope.report = {};
     $scope.drivers = driverService.getDrivers();
