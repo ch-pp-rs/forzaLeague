@@ -43,6 +43,13 @@ angular.module('forzaLeagueApp', [
         templateUrl: 'views/race-report.html',
         controller: 'RaceReportCtrl'
       })
+      .when('/hall-of-fame/', {
+        templateUrl: 'views/hall-of-fame.html'
+      })
+      .when('/historic-race-report/:season/:id', {
+        templateUrl: 'views/race-report.html',
+        controller: 'HistoricRaceReportCtrl'
+      })
       .when('/driver/:id', {
         templateUrl: 'views/driver.html',
         controller: 'DriverCtrl'

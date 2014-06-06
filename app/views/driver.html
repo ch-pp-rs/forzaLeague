@@ -13,11 +13,30 @@
         <li>Fastest Laps: {{ driver.fastestLaps }} ({{ driver.fastestLapPercentage | number:0 }}%)</li>
     </ul>
 
+    <h2>Summer 2014</h2>
     <table style="clear:both;">
         <tr ng-repeat="race in driver.raceResults">
             <td>Round {{ race.id }} ({{ race.type }})</td>
             <td>
                 <a ng-href="/#/race-report/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a>
+                ({{ tracks[race.track].city }}, {{ tracks[race.track].country }})
+
+            </td>
+            <td>{{ race.position }}<ng-pluralize count="race.position" offset="0"
+                                                 when="{'1': 'st',
+                                                     '2': 'nd',
+                                                     '3': 'rd',
+                                                     'other': 'th'}"></ng-pluralize>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Spring 2014</h2>
+    <table style="clear:both;">
+        <tr ng-repeat="race in driver.season1">
+            <td>Round {{ race.id }} ({{ race.type }})</td>
+            <td>
+                <a ng-href="/#/historic-race-report/1/{{race.id - 1}}">{{ tracks[race.track].circuit }}</a>
                 ({{ tracks[race.track].city }}, {{ tracks[race.track].country }})
 
             </td>

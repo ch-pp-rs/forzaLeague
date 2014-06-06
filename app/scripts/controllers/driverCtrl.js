@@ -2,7 +2,7 @@
 
 angular.module('forzaLeagueApp')
   .controller('DriverCtrl', function ($scope, $routeParams, driverService, trackService) {
-    $scope.driver = driverService.getDriverWithStats($routeParams.id);
+    $scope.driver = driverService.getDriverWithAllStats($routeParams.id);
     trackService.getTracks().then(function(data){
       $scope.tracks = data;
     });
