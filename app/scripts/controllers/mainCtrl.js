@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .controller('MainCtrl', function ($scope, driverService, seasonReportService) {
+  .controller('MainCtrl', function ($scope, driverService) {
     var driver, drivers;
 
     $scope.standings = [];
