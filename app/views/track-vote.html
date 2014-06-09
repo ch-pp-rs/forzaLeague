@@ -7,9 +7,11 @@
         <img ng-src="/images/numbers/{{ track.vote }}.png" height="100" />
         <a ng-hide="userVoted" ng-click="voteForTrack($index)"><h3>{{ track.circuit }}</h3></a>
         <span ng-show="userVoted"><h3>{{ track.circuit }}</h3></span>
+        {{ track.carClass }} Class
+        <br />
         {{ track.city }}, {{ track.country }}
         <br />
-        {{ track.miles }} miles
+        {{ 15/track.miles | number: 0 }} Laps ({{ track.miles }} miles)
         <br />
     </li>
 </ul>

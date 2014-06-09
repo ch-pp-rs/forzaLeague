@@ -2,6 +2,8 @@
 
 angular.module('forzaLeagueApp')
   .service('trackService', function($firebase, seasonReportService, $http, $q) {
+    var carClasses = ['D', 'C', 'B', 'A', 'S', 'R', 'P', 'X'];
+    
     function getTracks () {
       var deferred = $q.defer();
 
@@ -49,7 +51,7 @@ angular.module('forzaLeagueApp')
     };
 
     this.setupTrackVote = function (numberOfTracks) {
-      var i, randNum,
+      var i, randTrackNum, randClassNum,
           allRandNum = [],
           tracksToSelectFrom = [],
           trackVoteUrl = 'https://forza.firebaseio.com/trackVote/',
@@ -57,12 +59,14 @@ angular.module('forzaLeagueApp')
 
       getUnusedTracks().then(function(tracks) {
         for (i = 0; i < numberOfTracks; i++) {
-          randNum = Math.round(Math.random()*(tracks.length - 1));
-
-          if (allRandNum.indexOf(randNum) === -1) {
-            allRandNum.push(randNum);
-            tracks[randNum].vote = 0;
-            tracksToSelectFrom.push(tracks[randNum]);
+          randClassNum = Math.round(Math.random()*(carClasses.length - 1));
+          randTrackNum = Math.round(Math.random()*(tracks.length - 1));
+          
+          if (allRandNum.indexOf(randTrackNum) === -1) {
+            allRandNum.push(randTrackNum);
+            tracks[randTrackNum].vote = 0;
+            tracks[randTrackNum].carClass = carClasses[randClassNum];
+            tracksToSelectFrom.push(tracks[randTrackNum]);
           }
         }
 
