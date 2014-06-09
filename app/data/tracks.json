@@ -334,5 +334,26 @@
         "miles": 0.45,
         "circuit": "Long Beach West Route",
         "id": 47
+    },
+    {
+        "city": "Nurburg",
+        "country": "Germany",
+        "miles": 16.15,
+        "circuit": "Nordschleife and GP",
+        "id": 48
+    },
+    {
+        "city": "Nurburg",
+        "country": "Germany",
+        "miles": 12.93,
+        "circuit": "Nordschleife",
+        "id": 49
+    },
+    {
+        "city": "Nurburg",
+        "country": "Germany",
+        "miles": 3.20,
+        "circuit": "Nurburgring Grand Prix",
+        "id": 50
     }
 ]
