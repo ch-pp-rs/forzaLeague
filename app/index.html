@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Forza League</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -52,14 +52,31 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src='https://cdn.firebase.com/v0/firebase.js'></script>
-    <script src='https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js'></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+    <script src="bower_components/angularfire/angularfire.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+
+        <script src="scripts/controllers/addRaceReportCtrl.js"></script>
+        <script src="scripts/controllers/driverCtrl.js"></script>
+        <script src="scripts/controllers/historicRaceReportCtrl.js"></script>
+        <script src="scripts/controllers/mainCtrl.js"></script>
+        <script src="scripts/controllers/raceReportCtrl.js"></script>
+        <script src="scripts/controllers/raceReportOverviewCtrl.js"></script>
+        <script src="scripts/controllers/setupTrackVoteCtrl.js"></script>
+        <script src="scripts/controllers/trackVoteCtrl.js"></script>
+        <script src="scripts/controllers/unusedTracksCtrl.js"></script>
+
+        <script src="scripts/directives/leaderboard.js"></script>
+
+        <script src="scripts/services/driverService.js"></script>
+        <script src="scripts/services/raceReportService.js"></script>
+        <script src="scripts/services/seasonReportService.js"></script>
+        <script src="scripts/services/trackService.js"></script>
         <!-- endbuild -->
 </body>
 </html>

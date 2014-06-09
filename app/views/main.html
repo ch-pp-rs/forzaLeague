@@ -1,13 +1,39 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a href="/#/add-race-report">Add race report</a></li>
-  </ul>
-  <h3 class="text-muted">forzaLeague</h3>
-</div>
+<div ng-include="'views/header.html'"></div>
 
 <div class="jumbotron">
+    Race 1: MX-5 Class C - Silverstone Racing Circuit Silverstone International Circuit ({{ 15/2.25 | number: 0 }} Laps)<br />
+    Race 2: Golf R gift car (un-tuned) - Yas Marina Full Circuit ({{ 15/3.45 | number: 0 }} Laps)<br />
+    Race 3: Class A - Circuit de Catalunya Grand Prix Circuit ({{ 15/2.89 | number: 0 }} Laps)<br />
 </div>
 
+<!-- div fl-leaderboard fl-title="'Le Mans Old TT Class A'" fl-type="'a'" fl-location="'8'" fl-track="'101'"></div-->
+
+<h2>Summer 2014 Standings</h2>
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Driver</th>
+        <th>Races</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Fastest Laps</th>
+        <th>Penalty Points</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="driver in standings | orderBy: '-points'">
+        <td>{{ $index + 1 }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
+        <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
+        <td>{{ driver.races }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.podiums }}</td>
+        <td>{{ driver.fastestLaps }}</td>
+        <td></td>
+        <td>{{ driver.points }}</td>
+    </tr>
+</table>
+<br /><br />
 <div class="footer">
 </div>
+

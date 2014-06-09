@@ -1,0 +1,13 @@
+<div ng-include="'views/header.html'"></div>
+
+<h1>Unused Tracks</h1>
+<ul class="track-vote">
+    <li ng-repeat="track in tracks">
+        <h3>{{ $index + 1}}: {{ track.circuit }}</h3>
+        <span ng-show="userVoted"><h3>{{ track.circuit }}</h3></span>
+        {{ track.city }}, {{ track.country }}
+        <br />
+        {{ track.miles }} miles
+        <br />
+    </li>
+</ul>

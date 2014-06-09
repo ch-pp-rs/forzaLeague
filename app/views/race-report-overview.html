@@ -1,0 +1,27 @@
+<div ng-include="'views/header.html'"></div>
+<h1>Race Reports</h1>
+<table>
+    <tr>
+        <th></th>
+        <th>Car Class</th>
+        <th>Type</th>
+        <th>Circuit</th>
+        <th></th>
+        <th>Fastest Lap</th>
+        <th></th>
+        <th>Winner</th>
+    </tr>
+    <tr ng-repeat="race in raceReports | orderBy: 'id'">
+        <td width="70">Race {{ (race.id * 1) + 1 }}</td>
+        <td>{{ race.carClass }}</td>
+        <td>{{ race.type }}</td>
+        <td><a href="/#/race-report/{{race.id}}">{{ tracks[race.track].circuit }}</a></td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.fastestLapDriver.gamertag }}/avatarpic-s.png" /></td>
+        <td>{{ race.fastestLapDriver.name }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ race.result[0].driver.gamertag }}/avatarpic-s.png" /></td>
+        <td>{{ race.result[0].driver.name }}</td>
+    </tr>
+</table>
+
+<div class="footer">
+</div>

@@ -1,41 +1,64 @@
-<div class="header">
-    <ul class="nav nav-pills pull-right">
-        <li class="active"><a ng-href="#">Home</a></li>
-    </ul>
-    <h3 class="text-muted">forzaLeague</h3>
-</div>
+<div ng-include="'views/header.html'"></div>
 
 <table>
     <tr>
         <td>Track:</td>
         <td>{{ tracks[report.track].circuit }}</td>
         <td>
-            <ul>
-                <li ng-repeat="track in tracks">
-                    <a ng-click="selectTrack($index)">{{ track.circuit }} ({{ track.miles }})</a>
+            <ul class="selectTrack">
+                <li ng-repeat="track in tracks | orderBy: track.id">
+                    <a ng-click="selectTrack(track.id)">{{ track.circuit }} ({{ track.miles }})</a>
                 </li>
             </ul>
         </td>
     </tr>
     <tr>
+        <td>Race Number:</td>
+        <td>{{ report.id }}</td>
+    </tr>
+    <tr>
         <td>Date:</td>
-        <td><input ng-model="report.date"/></td>
+        <td>{{ report.publishedDate | date:'medium' }}</td>
     </tr>
     <tr>
         <td>Number of Laps:</td>
         <td><input ng-model="report.laps"/></td>
     </tr>
     <tr>
+        <td>Car Class:</td>
+        <td>
+            <select ng-model="report.carClass">
+                <option>D</option>
+                <option>C</option>
+                <option>B</option>
+                <option>A</option>
+                <option>S</option>
+                <option>R</option>
+                <option>P</option>
+                <option>X</option>
+                <option>Open</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Fastest Lap:</td>
+        <td>
+            <select ng-model="report.fastestLapDriver" ng-options="driver.name for driver in drivers">
+                <option value="">Non-league member</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
         <td>Result:</td>
         <td>
-            <ul>
+            <ol>
                 <li ng-repeat="result in report.result">
-                    {{ result.finishPos + 1}} -
                     <select ng-model="result.driver" ng-options="driver.name for driver in drivers">
                         <option value="">Non-league member</option>
                     </select>
                 </li>
-            </ul>
+                <a ng-click="report.result.push({'finishPos': report.result.length, 'driver': ''})">+</a>
+            </ol>
         </td>
     </tr>
 </table>

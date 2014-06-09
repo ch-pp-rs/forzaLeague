@@ -1,0 +1,24 @@
+<div ng-include="'views/header.html'"></div>
+
+	<strong>Date:</strong> {{ report.date }}
+	<br />	
+	<strong>Laps:</strong> {{ report.laps }}
+	<br />
+	<strong>Distance:</strong> {{ report.laps * tracks[report.track].miles }} miles
+	<br />
+	<strong>Circuit:</strong> {{ tracks[report.track].circuit }} ({{ tracks[report.track].city }}, {{ tracks[report.track].country }})
+	<br />
+    <strong>Event Type:</strong> {{ report.type }}
+    <br />
+    <strong>Fastest Lap:</strong> {{ report.fastestLapDriver.name }}
+    <br />
+	<table>
+		<tr ng-repeat="result in report.result">
+            <td>{{ $index + 1}}</td>
+            <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ result.driver.gamertag }}/avatarpic-s.png" /></td>
+            <td>{{ result.driver.name }}</td>
+		</tr>
+	</table>
+<div class="footer">
+</div>
+
