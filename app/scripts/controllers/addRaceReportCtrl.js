@@ -14,7 +14,7 @@ angular.module('forzaLeagueApp')
       $scope.report.id = data;
     });
       
-    $scope.report.publishedDate = d.getTime();
+    $scope.report.publishedDate = String(d.getTime());
     $scope.drivers = driverService.getDrivers();
 
     $scope.report.result = [];
