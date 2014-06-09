@@ -42,7 +42,7 @@ angular.module('forzaLeagueApp')
         {
           'id': 7,
           'name': 'Martin Smith',
-          'gamertag': ''
+          'gamertag': 'TwinSkate081'
         }
       ];
 
