@@ -12,7 +12,6 @@ angular.module('forzaLeagueApp')
       var deferred = $q.defer();
 
       seasonReportService.getHistoricSeason(season).then(function(data) {
-        console.log(data);
         deferred.resolve(data[id]);
       });
 
@@ -23,5 +22,20 @@ angular.module('forzaLeagueApp')
       var ref = new Firebase(raceReportUrl + report.id + '/');
 
       ref.update(angular.copy(report));
+    };
+      
+    this.getNextRaceId = function () {
+      var raceReports = seasonReportService.getCurrentSeason(),
+          deferred = $q.defer();
+
+      raceReports.$on('loaded', function(raceReports) {
+        if (raceReports) {
+          deferred.resolve(raceReports.length);
+        } else {
+          deferred.resolve(0);
+        }
+      });
+        
+      return deferred.promise;
     };
   });

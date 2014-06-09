@@ -2,11 +2,19 @@
 
 angular.module('forzaLeagueApp')
   .controller('AddRaceReportCtrl', function ($scope, trackService, raceReportService, driverService) {
+    var d = new Date();
+      
     trackService.getTracks().then(function(data){
       $scope.tracks = data;
     });
 
     $scope.report = {};
+
+    raceReportService.getNextRaceId().then(function (data) {
+      $scope.report.id = data;
+    });
+      
+    $scope.report.publishedDate = d.getTime();
     $scope.drivers = driverService.getDrivers();
 
     $scope.report.result = [];

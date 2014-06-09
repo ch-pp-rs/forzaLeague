@@ -14,11 +14,11 @@
     </tr>
     <tr>
         <td>Race Number:</td>
-        <td><input ng-model="report.id"/></td>
+        <td>{{ report.id }}</td>
     </tr>
     <tr>
         <td>Date:</td>
-        <td><input ng-model="report.date"/></td>
+        <td>{{ report.publishedDate | date:'medium' }}</td>
     </tr>
     <tr>
         <td>Number of Laps:</td>
