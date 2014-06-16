@@ -1,15 +1,24 @@
 <div ng-include="'views/header.html'"></div>
 
+<div ng-hide="loggedIn">
+    <input type="text" ng-model="userEmail" placeholder="Email" />
+    <input type="password" ng-model="userPassword" placeholder="Password" />
+    <input type="submit" ng-click="login(userEmail, userPassword)" />
+</div>
+<div ng-show="loggedIn">
+    <a ng-click="logout()">Log out</a>
+</div>
+<br />
+<div>
+    <a ng-click="setupTrackVote()"> Setup Track Vote</a>
+</div>
+<br />
+
 <table>
     <tr>
         <td>Track:</td>
-        <td>{{ tracks[report.track].circuit }}</td>
         <td>
-            <ul class="selectTrack">
-                <li ng-repeat="track in tracks | orderBy: track.id">
-                    <a ng-click="selectTrack(track.id)">{{ track.circuit }} ({{ track.miles }})</a>
-                </li>
-            </ul>
+            <select ng-model="report.track" ng-options="track.circuit group by track.country for track in tracks"></select>
         </td>
     </tr>
     <tr>
@@ -64,6 +73,6 @@
 </table>
 
 <a ng-click="submitRaceReport(report)">Submit race report</a>
-
+<br /><br />
 <div class="footer">
 </div>
