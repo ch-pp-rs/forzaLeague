@@ -3,7 +3,7 @@
 angular.module('forzaLeagueApp')
     .controller('AdminCtrl', function ($scope, $location, trackService, raceReportService, driverService) {
       var ref = new Firebase('https://forza.firebaseio.com/'),
-          d = new Date();
+          date = String(new Date().getTime());
 
       $scope.loggedIn = false;
 
@@ -45,7 +45,7 @@ angular.module('forzaLeagueApp')
         $scope.report.id = data;
       });
 
-      $scope.report.publishedDate = d.getTime();
+      $scope.report.publishedDate = date;
       $scope.drivers = driverService.getDrivers();
 
       $scope.report.result = [];

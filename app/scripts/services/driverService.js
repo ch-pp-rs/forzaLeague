@@ -1,48 +1,64 @@
 'use strict';
 
 angular.module('forzaLeagueApp')
-  .service('driverService', function (seasonReportService) {
+  .service('driverService', function ($q, seasonReportService) {
     function getDrivers () {
       var drivers = [
         {
           'id': 0,
           'name': 'Ben Smith',
-          'gamertag': 'guitarben'
+          'gamertag': 'guitarben',
+          'role': 'producer',
+          'team': 'producer'
         },
         {
           'id': 1,
           'name': 'Jason Jefferey',
-          'gamertag': 'M1lhous3'
+          'gamertag': 'M1lhous3',
+          'role': 'developer',
+          'team': 'developer'
         },
         {
           'id': 2,
           'name': 'Ben Chaplin',
-          'gamertag': 'AxelTron'
+          'gamertag': 'AxelTron',
+          'role': 'developer',
+          'team': 'developer'
         },
         {
           'id': 3,
           'name': 'Ben Grimwood',
-          'gamertag': 'MysticTriEdge'
+          'gamertag': 'MysticTriEdge',
+          'role': 'producer',
+          'team': 'producer'
         },
         {
           'id': 4,
           'name': 'Thuin Khan',
-          'gamertag': 'SacredMr T'
+          'gamertag': 'SacredMr T',
+          'role': 'producer',
+          'team': 'producer'
         },
         {
           'id': 5,
           'name': 'Ricky Clegg',
-          'gamertag': 'kloobe'
+          'gamertag': 'kloobe',
+          'role': 'developer',
+          'team': 'developer'
         },
         {
           'id': 6,
           'name': 'Billy Pittard',
-          'gamertag': 'Bonzai Bill'
+          'gamertag': 'Bonzai Bill',
+          'role': 'producer',
+          'team': 'producer'
         },
         {
           'id': 7,
           'name': 'Martin Smith',
-          'gamertag': 'TwinSkate081'
+          'gamertag': 'TwinSkate081',
+          'role': 'developer',
+          'team': 'developer'
         }
       ];
 
@@ -188,4 +204,59 @@ angular.module('forzaLeagueApp')
       return driver;
     };
 
+    this.getTeamStandings = function() {
+      var teamStat,
+          finalTeams = [],
+          raceReport,
+          result,
+          raceResult,
+          team,
+          teams = [],
+          points = getPoints(),
+          def = $q.defer();
+
+      seasonReportService.getCurrentSeason().$on('loaded', function(raceReports) {
+        for (raceReport in raceReports) {
+          raceResult = raceReports[raceReport].result;
+
+          for (result in raceResult) {
+            team = raceResult[result].driver.team;
+
+            if (!teams[team]) {
+              console.log('new team created');
+              teams[team] = {};
+              teams[team].name = 'Team ' + team.toUpperCase();
+              teams[team].points = 0;
+              teams[team].races = 0;
+              teams[team].wins = 0;
+              teams[team].podiums = 0;
+            }
+
+            teams[team].points = teams[team].points + points[result];
+            teams[team].races = teams[team].races + 1;
+
+            if (parseInt(result) === 0) {
+              teams[team].wins = teams[team].wins + 1;
+            }
+
+            if (parseInt(result) <= 2) {
+              teams[team].podiums = teams[team].podiums + 1;
+            }
+
+            teams[team].ppr = teams[team].points/teams[team].races;
+          }
+        }
+
+        for (teamStat in teams) {
+          finalTeams.push(teams[teamStat]);
+        }
+          console.log(finalTeams);
+        def.resolve(finalTeams);
+      });
+
+
+
+
+      return def.promise;
+    };
   });

@@ -1,8 +1,8 @@
 <div ng-include="'views/header.html'"></div>
 
 <div class="jumbotron">
-    Race 1: Class B - Yas Marina Full Circuit ({{ 15/3.45 | number: 0 }} Laps)<br />
-    Race 2: Class A - Circuit de Catalunya Grand Prix Circuit ({{ 15/2.89 | number: 0 }} Laps)<br />
+    Race 1: Class B - Nordschleife and GP ({{ 15/16.15 | number: 0 }} Laps)<br />
+    Race 2: Class A - Test Track Airfield Circuit ({{ 15/0.62 | number: 0 }} Laps)<br />
 </div>
 
 <!-- div fl-leaderboard fl-title="'Le Mans Old TT Class A'" fl-type="'a'" fl-location="'8'" fl-track="'101'"></div-->
@@ -21,6 +21,108 @@
         <th>Points</th>
     </tr>
     <tr ng-repeat="driver in standings | orderBy: '-points'">
+        <td>{{ $index + 1 }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
+        <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
+        <td>{{ driver.races }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.podiums }}</td>
+        <td>{{ driver.fastestLaps }}</td>
+        <td></td>
+        <td>{{ driver.points }}</td>
+    </tr>
+</table>
+<br />
+
+<h2>Team Summer 2014 Standings</h2>
+<table>
+    <tr>
+        <th></th>
+        <th>Team</th>
+        <th>Races</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="team in teamStandings | orderBy: '-points'">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ team.name }}</td>
+        <td>{{ team.races }}</td>
+        <td>{{ team.wins }}</td>
+        <td>{{ team.podiums }}</td>
+        <td>{{ team.points }}</td>
+    </tr>
+</table>
+<br />
+
+<h2>Developer Summer 2014 Standings</h2>
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Driver</th>
+        <th>Races</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Fastest Laps</th>
+        <th>Penalty Points</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="driver in standings | orderBy: '-points' | filter: 'developer'">
+        <td>{{ $index + 1 }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
+        <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
+        <td>{{ driver.races }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.podiums }}</td>
+        <td>{{ driver.fastestLaps }}</td>
+        <td></td>
+        <td>{{ driver.points }}</td>
+    </tr>
+</table>
+<br />
+
+<h2>Producer Summer 2014 Standings</h2>
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Driver</th>
+        <th>Races</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Fastest Laps</th>
+        <th>Penalty Points</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="driver in standings | orderBy: '-points' | filter: 'producer'">
+        <td>{{ $index + 1 }}</td>
+        <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
+        <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
+        <td>{{ driver.races }}</td>
+        <td>{{ driver.wins }}</td>
+        <td>{{ driver.podiums }}</td>
+        <td>{{ driver.fastestLaps }}</td>
+        <td></td>
+        <td>{{ driver.points }}</td>
+    </tr>
+</table>
+<br />
+
+<h2>Smith Summer 2014 Standings</h2>
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+        <th>Driver</th>
+        <th>Races</th>
+        <th>Wins</th>
+        <th>Podiums</th>
+        <th>Fastest Laps</th>
+        <th>Penalty Points</th>
+        <th>Points</th>
+    </tr>
+    <tr ng-repeat="driver in standings | orderBy: '-points' | filter: 'Smith'">
         <td>{{ $index + 1 }}</td>
         <td><img ng-src="http://avatar.xboxlive.com/avatar/{{ driver.gamertag }}/avatarpic-s.png"/></td>
         <td><a href="/#/driver/{{driver.id}}">{{ driver.name }}</a></td>
