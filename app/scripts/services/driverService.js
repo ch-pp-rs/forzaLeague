@@ -78,7 +78,10 @@ angular.module('forzaLeagueApp')
 
         for (var result in race.result) {
           if (driver.id === race.result[result].driver.id) {
-            driver.points = driver.points + points[result];
+
+            if (!race.result[result].noPointsAwarded) {
+                driver.points = driver.points + points[result];
+            }
             raceResult.position = parseInt(result) + 1;
 
             if (parseInt(result) === 0) {
@@ -223,7 +226,6 @@ angular.module('forzaLeagueApp')
             team = raceResult[result].driver.team;
 
             if (!teams[team]) {
-              console.log('new team created');
               teams[team] = {};
               teams[team].name = 'Team ' + team.toUpperCase();
               teams[team].points = 0;
@@ -250,7 +252,6 @@ angular.module('forzaLeagueApp')
         for (teamStat in teams) {
           finalTeams.push(teams[teamStat]);
         }
-          console.log(finalTeams);
         def.resolve(finalTeams);
       });
 
