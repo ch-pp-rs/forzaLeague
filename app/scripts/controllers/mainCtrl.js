@@ -14,7 +14,5 @@ angular.module('forzaLeagueApp')
 
     driverService.getTeamStandings().then(function(data) {
       $scope.teamStandings = data;
-      console.log(data);
-      console.log($scope.standings);
     });
   });

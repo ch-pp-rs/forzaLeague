@@ -65,6 +65,7 @@
                     <select ng-model="result.driver" ng-options="driver.name for driver in drivers">
                         <option value="">Non-league member</option>
                     </select>
+                    <input type="checkbox" ng-model="result.noPointsAwarded" />
                 </li>
                 <a ng-click="report.result.push({'finishPos': report.result.length, 'driver': ''})">+</a>
             </ol>
