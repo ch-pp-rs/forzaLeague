@@ -3,7 +3,7 @@
 angular.module('forzaLeagueApp')
     .controller('AdminCtrl', function ($scope, $location, trackService, raceReportService, driverService) {
       var ref = new Firebase('https://forza.firebaseio.com/'),
-          date = String(new Date().getTime());
+          date = new Date().getTime();
 
       $scope.loggedIn = false;
 
@@ -12,10 +12,8 @@ angular.module('forzaLeagueApp')
           console.log(error);
         } else if (user) {
           $scope.loggedIn = true;
-          console.log('User logged in: ' + user.uid + ', Provider: ' + user.provider);
         } else {
           $scope.loggedIn = false;
-          console.log('user not logged in');
         }
       });
 
